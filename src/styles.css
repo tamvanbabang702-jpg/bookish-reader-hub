@@ -5,20 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Reader Hub design system — premium editorial library aesthetic.
+ * Forest green + warm gold on warm paper, serif display / sans body.
+ * All colors in oklch.
  */
 
 @theme inline {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Work Sans", "Segoe UI", sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -45,91 +40,72 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-sage: var(--sage);
+  --color-forest: var(--forest);
+  --color-forest-soft: var(--forest-soft);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1rem;
+  --background: oklch(0.962 0.0127 87);        /* #F6F2E9 warm paper */
+  --foreground: oklch(0.307 0.0205 165);       /* #26332D ink green */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.307 0.0205 165);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.307 0.0205 165);
+  --primary: oklch(0.33 0.0332 168);           /* #243B32 forest */
+  --primary-foreground: oklch(0.962 0.0127 87);
+  --secondary: oklch(0.93 0.0242 86);          /* #EFE7D6 parchment */
+  --secondary-foreground: oklch(0.33 0.0332 168);
+  --muted: oklch(0.941 0.0209 89);             /* #F1EBDC */
+  --muted-foreground: oklch(0.579 0.0148 131); /* #777C73 sage */
+  --accent: oklch(0.921 0.0259 85);            /* #EDE4D2 */
+  --accent-foreground: oklch(0.33 0.0332 168);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(0.895 0.019 87);
+  --input: oklch(0.895 0.019 87);
+  --ring: oklch(0.757 0.0949 71);
+  --gold: oklch(0.757 0.0949 71);              /* #D6A66B */
+  --gold-deep: oklch(0.666 0.0963 72);         /* #B98A4E */
+  --sage: oklch(0.579 0.0148 131);             /* #777C73 */
+  --forest: oklch(0.33 0.0332 168);
+  --forest-soft: oklch(0.392 0.0254 160);      /* #3A4A41 */
+  --paper: oklch(0.962 0.0127 87);
+  --ink: oklch(0.307 0.0205 165);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.213 0.013 160);        /* #141B17 deep forest night */
+  --foreground: oklch(0.941 0.0209 89);        /* #F1EBDC */
+  --card: oklch(0.25 0.0159 161);              /* #1B241F */
+  --card-foreground: oklch(0.941 0.0209 89);
+  --popover: oklch(0.27 0.017 161);
+  --popover-foreground: oklch(0.941 0.0209 89);
+  --primary: oklch(0.757 0.0949 71);           /* gold leads in dark mode */
+  --primary-foreground: oklch(0.213 0.013 160);
+  --secondary: oklch(0.345 0.028 163);         /* #2C3E35 */
+  --secondary-foreground: oklch(0.941 0.0209 89);
+  --muted: oklch(0.29 0.018 162);
+  --muted-foreground: oklch(0.653 0.0156 149); /* #8A938B */
+  --accent: oklch(0.307 0.0205 165);
+  --accent-foreground: oklch(0.941 0.0209 89);
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(0.4 0.02 162 / 55%);
+  --input: oklch(0.4 0.02 162 / 60%);
+  --ring: oklch(0.757 0.0949 71);
+  --gold: oklch(0.787 0.095 71);
+  --gold-deep: oklch(0.666 0.0963 72);
+  --sage: oklch(0.653 0.0156 149);
+  --forest: oklch(0.757 0.0949 71);
+  --forest-soft: oklch(0.345 0.028 163);
+  --paper: oklch(0.213 0.013 160);
+  --ink: oklch(0.941 0.0209 89);
 }
 
 @layer base {
@@ -137,8 +113,56 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Reading note font sizes */
+@utility text-note-sm { font-size: 0.85rem; line-height: 1.65; }
+@utility text-note-md { font-size: 1rem; line-height: 1.7; }
+@utility text-note-lg { font-size: 1.15rem; line-height: 1.75; }
+
+/* Bottom safe-area spacing above nav bar */
+@utility page-bottom {
+  padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* Fine gold hairline under editorial headings */
+@utility rule-gold {
+  &::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin-top: 0.5rem;
+    background: var(--color-gold);
+    border-radius: 999px;
+  }
+}
+
+@keyframes rh-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-up {
+  animation: rh-fade-up 0.35s ease both;
 }
