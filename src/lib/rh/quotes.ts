@@ -41,5 +41,7 @@ export function quoteOfDay(dateKey: string): BuiltinQuote {
   for (let i = 0; i < dateKey.length; i++) {
     hash = (hash * 31 + dateKey.charCodeAt(i)) >>> 0;
   }
-  return READING_QUOTES[hash % READING_QUOTES.length];
+  const idx = hash % READING_QUOTES.length;
+  return READING_QUOTES[idx] ?? READING_QUOTES[0]!;
+
 }

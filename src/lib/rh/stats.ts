@@ -18,7 +18,7 @@ export function dateKey(d: Date = new Date()): string {
 
 export function parseKey(key: string): Date {
   const [y, m, d] = key.split("-").map(Number);
-  return new Date(y, (m ?? 1) - 1, d ?? 1);
+  return new Date(y ?? 1970, (m ?? 1) - 1, d ?? 1);
 }
 
 export function addDays(key: string, days: number): string {
@@ -289,5 +289,5 @@ export function vaultByKind(data: RHData, kind?: VaultKind): VaultEntry[] {
 export function randomEntry(data: RHData, excludeId?: string): VaultEntry | null {
   const pool = data.vault.filter((v) => v.id !== excludeId);
   if (pool.length === 0) return null;
-  return pool[Math.floor(Math.random() * pool.length)];
+  return pool[Math.floor(Math.random() * pool.length)] ?? null;
 }
