@@ -1,4 +1,5 @@
 // Reader Hub data model — everything is stored locally (localStorage + IndexedDB images).
+// Optional properties are declared `?: T | undefined` (tsconfig uses exactOptionalPropertyTypes).
 
 export type ContentKind = "book" | "article" | "journal";
 export type ReadStatus = "want" | "reading" | "completed" | "paused" | "abandoned";
@@ -11,18 +12,18 @@ export interface ReadingItem {
   kind: ContentKind;
   title: string;
   author: string;
-  coverId?: string; // IndexedDB image key
-  description?: string;
-  category?: string;
+  coverId?: string | undefined; // IndexedDB image key
+  description?: string | undefined;
+  category?: string | undefined;
   tags: string[];
   dateAdded: string; // yyyy-mm-dd
-  startDate?: string;
-  completedDate?: string;
+  startDate?: string | undefined;
+  completedDate?: string | undefined;
   status: ReadStatus;
-  totalPages?: number;
+  totalPages?: number | undefined;
   currentPage: number;
-  rating?: number; // 1..5
-  review?: string;
+  rating?: number | undefined; // 1..5
+  review?: string | undefined;
   favorite: boolean;
   collectionIds: string[];
 }
@@ -33,7 +34,7 @@ export interface ReadingSession {
   date: string; // yyyy-mm-dd
   minutes: number;
   pages: number;
-  note?: string;
+  note?: string | undefined;
   source: "timer" | "manual";
 }
 
@@ -47,12 +48,12 @@ export interface VaultEntry {
   kind: VaultKind;
   title: string;
   content: string; // lightweight rich text (## heading, **bold**, *italic*, - list, > quote)
-  itemId?: string;
+  itemId?: string | undefined;
   tags: string[];
   favorite: boolean;
   createdAt: number;
   updatedAt: number;
-  reviewedAt?: number;
+  reviewedAt?: number | undefined;
   reviews: VaultReview[];
 }
 
@@ -66,14 +67,14 @@ export interface ReflectionDoc {
 export interface Collection {
   id: string;
   name: string;
-  description?: string;
+  description?: string | undefined;
   createdAt: number;
 }
 
 export interface QuoteEntry {
   id: string;
   text: string;
-  author?: string;
+  author?: string | undefined;
   createdAt: number;
   favorite: boolean;
 }
@@ -82,7 +83,7 @@ export interface DiscoveryEntry {
   id: string;
   kind: DiscoveryKind;
   text: string;
-  itemId?: string;
+  itemId?: string | undefined;
   createdAt: number;
 }
 
@@ -91,7 +92,7 @@ export interface Challenge {
   name: string;
   unit: ChallengeUnit;
   target: number;
-  deadline?: string; // yyyy-mm-dd
+  deadline?: string | undefined; // yyyy-mm-dd
   createdAt: number;
   done: boolean;
 }
@@ -101,12 +102,12 @@ export interface ActiveTimer {
   startedAt: number; // epoch ms of last "start" (valid while running)
   accumulatedMin: number; // minutes banked while paused
   running: boolean;
-  goalMin?: number;
+  goalMin?: number | undefined;
 }
 
 export interface Settings {
   name: string;
-  avatarId?: string;
+  avatarId?: string | undefined;
   theme: "light" | "dark";
   fontSize: "sm" | "md" | "lg";
   dailyGoalType: "minutes" | "pages";
@@ -196,6 +197,7 @@ export const DEFAULT_CHECKLIST = [
 
 export const DEFAULT_SETTINGS: Settings = {
   name: "",
+  avatarId: undefined,
   theme: "light",
   fontSize: "md",
   dailyGoalType: "minutes",
