@@ -289,7 +289,7 @@ export function SessionDialog({
     }
     actions.addSession({
       itemId,
-      date: new Date().toLocaleDateString("sv"),
+      date: dateKey(),
       minutes: m,
       pages: p,
       note: note.trim() || undefined,
