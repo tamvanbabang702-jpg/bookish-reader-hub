@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +35,7 @@ import {
   type VaultEntry,
   type VaultKind,
 } from "@/lib/rh/types";
+import { dateKey } from "@/lib/rh/stats";
 import { VAULT_META } from "@/components/rh/common";
 import { cn } from "@/lib/utils";
 
@@ -93,21 +94,21 @@ export function ItemFormDialog({
     }
     setSaving(true);
     actions.saveItem({
-      id: item?.id,
+      ...(item?.id ? { id: item.id } : {}),
       kind,
       title: title.trim(),
       author: author.trim(),
-      category: category || undefined,
+      ...(category ? { category } : {}),
       tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
-      totalPages: totalPages ? Number(totalPages) : undefined,
+      ...(totalPages ? { totalPages: Number(totalPages) } : {}),
       status,
-      coverId,
+      ...(coverId ? { coverId } : {}),
       currentPage: item?.currentPage ?? 0,
-      dateAdded: item?.dateAdded,
-      startDate: item?.startDate,
-      completedDate: item?.completedDate,
-      rating: item?.rating,
-      review: item?.review,
+      ...(item?.dateAdded ? { dateAdded: item.dateAdded } : {}),
+      ...(item?.startDate ? { startDate: item.startDate } : {}),
+      ...(item?.completedDate ? { completedDate: item.completedDate } : {}),
+      ...(item?.rating ? { rating: item.rating } : {}),
+      review: item?.review ?? "",
       favorite: item?.favorite ?? false,
       collectionIds: item?.collectionIds ?? [],
     });
@@ -405,7 +406,7 @@ export function VaultFormDialog({
       return;
     }
     actions.saveVault({
-      id: entry?.id,
+      ...(entry?.id ? { id: entry.id } : {}),
       kind,
       title: title.trim(),
       content: content.trim(),
@@ -413,7 +414,7 @@ export function VaultFormDialog({
       tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
       favorite: entry?.favorite ?? false,
       reviews: entry?.reviews ?? [],
-      reviewedAt: entry?.reviewedAt,
+      ...(entry?.reviewedAt ? { reviewedAt: entry.reviewedAt } : {}),
     });
     toast.success(entry ? "Entry updated" : "Saved to your Vault");
     setOpen(false);

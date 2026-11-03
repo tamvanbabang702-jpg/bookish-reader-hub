@@ -10,6 +10,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
 import appCss from "../styles.css?url";
@@ -130,7 +131,7 @@ function RootComponent() {
   // Apply saved theme + note font size (client settings).
   useEffect(() => {
     document.documentElement.classList.toggle("dark", data.settings.theme === "dark");
-    document.documentElement.dataset.rhSize = data.settings.fontSize;
+    document.documentElement.dataset["rhSize"] = data.settings.fontSize;
   }, [data.settings.theme, data.settings.fontSize]);
 
   const bare =
