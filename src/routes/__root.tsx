@@ -1,6 +1,4 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
-import { useQueryClient } from "@tanstack/react-query";
 import {
   Outlet,
   Link as RouterLink,
@@ -8,9 +6,11 @@ import {
   HeadContent,
   Scripts,
   useRouter,
+  useRouterState,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { Bold, Heading2, Italic, List, Loader2, Quote as QuoteIcon } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -162,12 +162,3 @@ export function LoadingBlock({ label = "Loading…" }: { label?: string }) {
   );
 }
 
-export function Crumb({ to, label }: { to: string; label: string }) {
-  return (
-    <Link to={to} className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground">
-      {label}
-    </Link>
-  );
-}
-
-export { Bold, Heading2, Italic, List, QuoteIcon };
