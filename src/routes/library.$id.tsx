@@ -387,7 +387,6 @@ function ItemDetailPage() {
         </div>
       </SectionCard>
 
-      {item.review ? null : <SourceChip />}
     </main>
   );
 }
