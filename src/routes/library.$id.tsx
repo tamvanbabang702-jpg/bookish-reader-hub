@@ -180,7 +180,7 @@ function ItemDetailPage() {
           <div className="mt-2 flex items-center gap-2">
             <StatusChip status={item.status} />
             <Stars
-              value={item.rating}
+              value={item.rating ?? 0}
               onChange={(v) =>
                 actions.saveItem({ id: item.id, kind: item.kind, title: item.title, rating: v })
               }
@@ -373,7 +373,7 @@ function ItemDetailPage() {
       <SectionCard title="My review" className="mt-4">
         <div className="grid gap-2">
           <Stars
-            value={item.rating}
+            value={item.rating ?? 0}
             size="h-5 w-5"
             onChange={(v) => actions.saveItem({ id: item.id, kind: item.kind, title: item.title, rating: v })}
           />
