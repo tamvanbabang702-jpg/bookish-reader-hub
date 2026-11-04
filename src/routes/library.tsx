@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ChevronRight, Heart, Layers, Pencil, Plus, Search } from "lucide-react";
+import { ChevronRight, Heart, Layers, LibraryBig, Pencil, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageHeader, SectionCard, EmptyState, TabBar, Cover, ProgressBar, StatusChip } from "@/components/rh/common";
