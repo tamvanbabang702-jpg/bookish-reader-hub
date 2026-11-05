@@ -8,6 +8,7 @@ import {
   PageHeader,
   SectionCard,
   SourceChip,
+  TabBar,
   VAULT_META,
 } from "@/components/rh/common";
 import { VaultFormDialog } from "@/components/rh/forms";
@@ -112,11 +113,7 @@ function VaultPage() {
       </div>
 
       <div className="mt-2">
-        <tabs.Tabs
-          tabs={tabs}
-          value={tab}
-          onChange={(v) => setTab(v)}
-        />
+        <TabBar tabs={tabs} value={tab} onChange={(v) => setTab(v)} />
       </div>
 
       {entries.length === 0 ? (

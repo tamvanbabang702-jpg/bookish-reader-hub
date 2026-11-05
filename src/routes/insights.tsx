@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { cn } from "@/lib/utils";
 import { CheckCircle2, Circle, Clock, FileText, Flame, Layers } from "lucide-react";
 import { PageHeader, ProgressBar, ProgressRing, SectionCard } from "@/components/rh/common";
 import { useRH } from "@/lib/rh/react";
