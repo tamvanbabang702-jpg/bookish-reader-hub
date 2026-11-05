@@ -175,5 +175,3 @@ function InsightsPage() {
     </main>
   );
 }
-
-import { cn } from "@/lib/utils";
