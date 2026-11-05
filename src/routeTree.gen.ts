@@ -10,9 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChallengesRouteImport } from './routes/challenges'
 import { Route as DiscoveriesRouteImport } from './routes/discoveries'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as LibraryRouteImport } from './routes/library'
+import { Route as QuotesRouteImport } from './routes/quotes'
 import { Route as ReaderRouteImport } from './routes/reader'
 import { Route as VaultRouteImport } from './routes/vault'
 import { Route as LibraryIdRouteImport } from './routes/library.$id'
@@ -20,6 +22,11 @@ import { Route as LibraryIdRouteImport } from './routes/library.$id'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengesRoute = ChallengesRouteImport.update({
+  id: '/challenges',
+  path: '/challenges',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiscoveriesRoute = DiscoveriesRouteImport.update({
@@ -35,6 +42,11 @@ const InsightsRoute = InsightsRouteImport.update({
 const LibraryRoute = LibraryRouteImport.update({
   id: '/library',
   path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuotesRoute = QuotesRouteImport.update({
+  id: '/quotes',
+  path: '/quotes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReaderRoute = ReaderRouteImport.update({
@@ -55,18 +67,22 @@ const LibraryIdRoute = LibraryIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
   '/discoveries': typeof DiscoveriesRoute
   '/insights': typeof InsightsRoute
   '/library': typeof LibraryRouteWithChildren
+  '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
   '/discoveries': typeof DiscoveriesRoute
   '/insights': typeof InsightsRoute
   '/library': typeof LibraryRouteWithChildren
+  '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
@@ -74,9 +90,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
   '/discoveries': typeof DiscoveriesRoute
   '/insights': typeof InsightsRoute
   '/library': typeof LibraryRouteWithChildren
+  '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
@@ -85,27 +103,33 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/challenges'
     | '/discoveries'
     | '/insights'
     | '/library'
+    | '/quotes'
     | '/reader'
     | '/vault'
     | '/library/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/challenges'
     | '/discoveries'
     | '/insights'
     | '/library'
+    | '/quotes'
     | '/reader'
     | '/vault'
     | '/library/$id'
   id:
     | '__root__'
     | '/'
+    | '/challenges'
     | '/discoveries'
     | '/insights'
     | '/library'
+    | '/quotes'
     | '/reader'
     | '/vault'
     | '/library/$id'
@@ -113,9 +137,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChallengesRoute: typeof ChallengesRoute
   DiscoveriesRoute: typeof DiscoveriesRoute
   InsightsRoute: typeof InsightsRoute
   LibraryRoute: typeof LibraryRouteWithChildren
+  QuotesRoute: typeof QuotesRoute
   ReaderRoute: typeof ReaderRoute
   VaultRoute: typeof VaultRoute
 }
@@ -127,6 +153,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenges': {
+      id: '/challenges'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/discoveries': {
@@ -148,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/library'
       fullPath: '/library'
       preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quotes': {
+      id: '/quotes'
+      path: '/quotes'
+      fullPath: '/quotes'
+      preLoaderRoute: typeof QuotesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reader': {
@@ -187,9 +227,11 @@ const LibraryRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChallengesRoute: ChallengesRoute,
   DiscoveriesRoute: DiscoveriesRoute,
   InsightsRoute: InsightsRoute,
   LibraryRoute: LibraryRouteWithChildren,
+  QuotesRoute: QuotesRoute,
   ReaderRoute: ReaderRoute,
   VaultRoute: VaultRoute,
 }
