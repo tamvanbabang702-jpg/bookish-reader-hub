@@ -16,7 +16,7 @@ import { useRH } from "@/lib/rh/react";
 import { actions } from "@/lib/rh/actions";
 import { dateKey, prettyShort, entriesDaysAgo } from "@/lib/rh/stats";
 import { RichContent } from "@/lib/rh/rich";
-import { VAULT_KINDS, type VaultEntry, type VaultKind } from "@/lib/rh/types";
+import { VAULT_KINDS, type ReadingItem, type VaultEntry, type VaultKind } from "@/lib/rh/types";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/vault")({
@@ -167,7 +167,7 @@ function MemoryRow({ entry }: { entry: VaultEntry }) {
   );
 }
 
-function VaultCard({ entry, item }: { entry: VaultEntry; item?: (Parameters<typeof SourceChip>[0]["item"]) }) {
+function VaultCard({ entry, item }: { entry: VaultEntry; item?: ReadingItem | undefined }) {
   const meta = VAULT_META[entry.kind];
   const Icon = meta.icon;
   const reviewed = entry.reviewedAt ? dateKey(new Date(entry.reviewedAt)) : null;
