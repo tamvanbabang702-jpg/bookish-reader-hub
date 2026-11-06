@@ -19,7 +19,7 @@ import { EmptyState, PageHeader, SourceChip, TabBar } from "@/components/rh/comm
 import { useRH } from "@/lib/rh/react";
 import { actions } from "@/lib/rh/actions";
 import { dateKey, prettyShort } from "@/lib/rh/stats";
-import { DISCOVERY_KINDS, type DiscoveryEntry, type DiscoveryKind } from "@/lib/rh/types";
+import { DISCOVERY_KINDS, type DiscoveryEntry, type DiscoveryKind, type ReadingItem } from "@/lib/rh/types";
 
 export const Route = createFileRoute("/discoveries")({
   head: () => ({
@@ -96,7 +96,7 @@ function DiscoveriesPage() {
   );
 }
 
-function DiscoveryCard({ entry, item }: { entry: DiscoveryEntry; item?: (typeof DISCOVERY_KINDS extends never ? never : NonNullable<ReturnType<typeof useRH>["items"][number]>) }) {
+function DiscoveryCard({ entry, item }: { entry: DiscoveryEntry; item?: ReadingItem | undefined }) {
   const label = DISCOVERY_KINDS.find((k) => k.id === entry.kind)?.label ?? entry.kind;
   return (
     <article className="rounded-2xl border border-border/70 bg-card p-4 shadow-sm">

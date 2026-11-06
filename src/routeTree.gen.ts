@@ -16,6 +16,7 @@ import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as QuotesRouteImport } from './routes/quotes'
 import { Route as ReaderRouteImport } from './routes/reader'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as VaultRouteImport } from './routes/vault'
 import { Route as LibraryIdRouteImport } from './routes/library.$id'
 
@@ -54,6 +55,11 @@ const ReaderRoute = ReaderRouteImport.update({
   path: '/reader',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VaultRoute = VaultRouteImport.update({
   id: '/vault',
   path: '/vault',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/library': typeof LibraryRouteWithChildren
   '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
+  '/settings': typeof SettingsRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/library': typeof LibraryRouteWithChildren
   '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
+  '/settings': typeof SettingsRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/library': typeof LibraryRouteWithChildren
   '/quotes': typeof QuotesRoute
   '/reader': typeof ReaderRoute
+  '/settings': typeof SettingsRoute
   '/vault': typeof VaultRoute
   '/library/$id': typeof LibraryIdRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/quotes'
     | '/reader'
+    | '/settings'
     | '/vault'
     | '/library/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/quotes'
     | '/reader'
+    | '/settings'
     | '/vault'
     | '/library/$id'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/quotes'
     | '/reader'
+    | '/settings'
     | '/vault'
     | '/library/$id'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   LibraryRoute: typeof LibraryRouteWithChildren
   QuotesRoute: typeof QuotesRoute
   ReaderRoute: typeof ReaderRoute
+  SettingsRoute: typeof SettingsRoute
   VaultRoute: typeof VaultRoute
 }
 
@@ -197,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReaderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vault': {
       id: '/vault'
       path: '/vault'
@@ -233,6 +253,7 @@ const rootRouteChildren: RootRouteChildren = {
   LibraryRoute: LibraryRouteWithChildren,
   QuotesRoute: QuotesRoute,
   ReaderRoute: ReaderRoute,
+  SettingsRoute: SettingsRoute,
   VaultRoute: VaultRoute,
 }
 export const routeTree = rootRouteImport

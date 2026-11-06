@@ -245,7 +245,7 @@ export function ProgressRing({
 }: {
   value: number;
   size?: number;
-  label: string;
+  label: ReactNode;
   sub?: string;
 }) {
   const stroke = 8;
@@ -395,7 +395,7 @@ export function ConfirmDialog({
 
 // ---------- linked item chip ----------
 
-export function SourceChip({ item }: { item?: ReadingItem }) {
+export function SourceChip({ item }: { item?: ReadingItem | undefined }) {
   if (!item) return null;
   return (
     <Link

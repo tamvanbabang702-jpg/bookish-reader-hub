@@ -8,6 +8,7 @@ import {
   bestStreak,
   booksCompletedThisYear,
   consistencyPct,
+  dateKey,
   dayTotalsMap,
   daysAgoKey,
   formatMinutes,
@@ -15,7 +16,6 @@ import {
   milestones,
   readingStreak,
   reportForRange,
-  todayKey,
   topCategories,
 } from "@/lib/rh/stats";
 
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/insights")({
 function InsightsPage() {
   const data = useRH();
   const totals = dayTotalsMap(data.sessions);
-  const today = todayKey();
+  const today = dateKey();
   const days = useMemo(() => lastNDays(14), []);
   const todayMinutes = totals.get(today)?.minutes ?? 0;
   const goal = data.settings.dailyGoalValue || 1;
