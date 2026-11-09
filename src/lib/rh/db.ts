@@ -100,6 +100,14 @@ function emptyData(): RHData {
   };
 }
 
+// SSR and the browser's hydration pass must begin from the same empty snapshot.
+// Browser persistence becomes visible immediately after hydration through loadData.
+const serverSnapshot = emptyData();
+
+export function getServerSnapshot(): RHData {
+  return serverSnapshot;
+}
+
 function migrate(raw: Partial<RHData> | null | undefined): RHData {
   const base = emptyData();
   if (!raw || typeof raw !== "object") return base;
