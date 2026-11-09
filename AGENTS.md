@@ -10,3 +10,5 @@
 <!-- LOVABLE:END -->
 
 Reader Hub remains offline-first: feature pages use the existing client-side store, with lightweight records in localStorage and images in IndexedDB, so reading data stays available without a network.
+
+Use a stable empty server snapshot for the localStorage-backed external store so saved browser data appears after hydration without mismatching server-rendered content.

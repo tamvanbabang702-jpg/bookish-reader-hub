@@ -54,7 +54,7 @@ function Index() {
   return (
     <main className="page-bottom mx-auto max-w-lg px-4 pt-4">
       <div className="animate-fade-up">
-        <p className="text-sm text-muted-foreground">{greeting()}()</p>
+        <p className="text-sm text-muted-foreground">{greeting()}</p>
         <PageHeader
           title={data.settings.name ? `${data.settings.name.split(" ")[0]}'s reading day` : "Your reading day"}
           className="mt-0 [&>div>h1]:mt-0"

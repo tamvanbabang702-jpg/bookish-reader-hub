@@ -61,11 +61,8 @@ export function formatSeconds(totalSec: number): string {
 }
 
 export function greeting(): string {
-  const h = new Date().getHours();
-  if (h < 5) return "Still awake";
-  if (h < 12) return "Good morning";
-  if (h < 18) return "Good afternoon";
-  return "Good evening";
+  // Keep the server and browser's first render identical across time zones.
+  return "Welcome back";
 }
 
 // ---------- item derived values ----------

@@ -1,3 +1,3 @@
 - [x] Continue Reader Hub from the known preview errors and missing Settings destination.
-- [ ] Resolve TypeScript and preview build errors; complete local settings, backup, restore, and reset controls.
-- [ ] Run route and interaction checks, then confirm the preview has no current build errors.
+- [x] Resolve TypeScript and preview build errors; complete local settings, backup, restore, and reset controls.
+- [x] Run route and interaction checks, then confirm the preview has no current build errors.
